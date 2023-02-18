@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+/* ---------------------------NavBarGL--------------------------- */
+
+.navbar-container {
+    background-color: black;
+    color: #FFFF;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* ---------------------------Clock--------------------------- */
+.Clock {
+    background-color: whitesmoke;
+    color: black;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: solid 2px rgb(84, 82, 82);
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.Clock .number {
+    --rotation : 0;
+    position: absolute;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+}
+
+.Clock .number1 {--rotation:30deg}
+.Clock .number2 {--rotation:60deg}
+.Clock .number3 {--rotation:90deg}
+.Clock .number4 {--rotation:120deg}
+.Clock .number5 {--rotation:150deg}
+.Clock .number6 {--rotation:180deg}
+.Clock .number7 {--rotation:210deg}
+.Clock .number8 {--rotation:240deg}
+.Clock .number9 {--rotation:270deg}
+.Clock .number10 {--rotation:300deg}
+.Clock .number11 {--rotation:330deg}
+
+.Clock .Hand {
+    --rotdation:0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 8px;
+    height: 43%;
+    background-color: black;
+    border-top-right-radius:10px;
+    border-top-left-radius:10px;
+    transform-origin: bottom;
+    z-index: 10;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+} 
+
+.Clock::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    z-index: 11;
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+}
+
+.Clock .Hand.Hours {
+    --rotation:0;
+    width: 6px;
+    height: 35%;
+    background-color: rgb(0, 0, 0);
+}
+.Clock .Hand.Minutes {
+    --rotation:0;
+    height: 43%;
+    width: 4px;
+    background-color: rgb(0, 0, 0);
+}
+.Clock .Hand.Seconds {
+    --rotation:0;
+    width: 2px;
+    background-color: rgb(255, 157, 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------NavTitles--------------------------- */
+
+.navbar-titles {
+    gap : 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.navbar-titles>button{
+    padding: 0 1rem;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    height: 1.5rem;
+    width: 10%;
+    border: 0;
+    font-family:sans-serif;
+    font-weight: 600;
+}
+
+.navbar-titles>button:hover {
+    border-bottom: 2px solid white;
+    transition: all ease-out 100ms;
+    border-radius: 5px;
+}
+
+/* ---------------------------FadInAnimation--------------------------- */
+
+#fade-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100VH;
+    opacity: 0;
+    animation: fade-in 750ms;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }

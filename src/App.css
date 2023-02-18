@@ -1,0 +1,26 @@
+*,::after,::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  
+}
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.fade-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100VH;
+  opacity: 0;
+  animation: fade-in 800ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
