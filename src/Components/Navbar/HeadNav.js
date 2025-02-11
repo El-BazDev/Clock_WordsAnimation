@@ -1,30 +1,40 @@
-import React, {useState } from 'react'
-import Clock from '../Clock/Clock'
-import ClockDh from '../Clock/ClockDh'
-import ClockLA from '../Clock/ClockLA'
-import ClockMscw from '../Clock/ClockMscw'
-import ClockTky from '../Clock/ClockTky'
-import './HeadNav.css'
+import React, { useState } from 'react';
+import './HeadNav.css';
+import Clock from '../Clock/Clock';
+import BaseClock from '../Clock/BaseClock';
 
 function HeadNav() {
+  const [selectedCity, setSelectedCity] = useState(1);
 
+  const CITIES = {
+    1: { name: 'Local', component: <Clock /> },
+    2: { name: 'Los Angeles', timezone: 'America/Los_Angeles' },
+    3: { name: 'Doha', timezone: 'Asia/Qatar' },
+    4: { name: 'Moscow', timezone: 'Europe/Moscow' },
+    5: { name: 'Tokyo', timezone: 'Asia/Tokyo' }
+  };
 
-  const [toggle,setToggle] = useState(1)
-
+  const renderClock = () => {
+    const city = CITIES[selectedCity];
+    if (selectedCity === 1) return city.component;
+    return <BaseClock timezone={city.timezone} />;
+  };
 
   return (
-    <div className='navbar-container' id="fade-in">
-   {toggle == 1 ? <Clock  /> : toggle == 2 ? <ClockLA/>: toggle == 3 ? <ClockDh/> : toggle == 4 ? <ClockMscw/> : <ClockTky/>} 
-
-      <div className='navbar-titles'>
-        <button onClick={()=>setToggle(1)}>Local</button>
-        <button onClick={()=>setToggle(2)}>Los Angeles</button>
-        <button onClick={()=>setToggle(3)}>Doha</button>
-        <button onClick={()=>setToggle(4)}>Moscow</button>
-        <button onClick={()=>setToggle(5)}>Tokyo</button>
-      </div>    
+    <div className="navbar-container" id="fade-in">
+      {renderClock()}
+      <div className="navbar-titles">
+        {Object.entries(CITIES).map(([key, { name }]) => (
+          <button
+            key={key}
+            onClick={() => setSelectedCity(Number(key))}
+          >
+            {name}
+          </button>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default HeadNav
+export default HeadNav;
